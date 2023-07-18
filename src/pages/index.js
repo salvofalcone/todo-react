@@ -22,9 +22,11 @@ export default function Home() {
       <TodosContext.Provider value={{ todoList }}>
         <main className={styles.Main}>
           <Navbar />
-          {todoList.map((todo) => (
-            <Todo data={todo} />
-          ))}
+          <div className={styles.TodoContainer}>
+            {todoList.map((todo) => (
+              <Todo data={todo} key={todo.id} />
+            ))}
+          </div>
         </main>
       </TodosContext.Provider>
     </>
