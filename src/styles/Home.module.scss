@@ -1,31 +1,8 @@
-.TodoList {
-  // display: flex;
-  // justify-content: center;
-  // flex-wrap: wrap;
-  // gap: 12px;
-
-  max-width: 600px;
-
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 20px;
-
-  &__Form {
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-
-    &__Input {
-      padding: 4px;
-      width: 80%;
-    }
-
-    &__Button {
-      width: 28px;
-      height: 28px;
-      cursor: pointer;
-    }
-  }
+.Main {
+  height: 100vh;
+//   background-image: url("../../public/download.jpeg");
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center center;
+// 
 }

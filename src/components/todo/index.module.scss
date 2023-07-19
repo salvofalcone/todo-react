@@ -11,11 +11,12 @@
   cursor: pointer;
   background-color: rgba(230, 203, 22, 0.616);
   transition: all 400ms ease-in-out;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  box-shadow: 5px -5px 10px #cacaca, -5px 5px 10px #f6f6f6;
 
   &__Id {
-    color: rgba(0, 0, 0, 0.3)
+    color: rgba(0, 0, 0, 0.3);
   }
 
   &__Remove {
