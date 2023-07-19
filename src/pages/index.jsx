@@ -4,39 +4,14 @@ import Head from "next/head";
 
 import { TodosContext } from "@/state";
 import { todosReducer } from "@/state/reducers";
-import Todo from "@/components/todo";
+import TodoList from "@/components/todoList";
 import Navbar from "@/components/navbar";
 import { todoList } from "@/mocks/todoList";
 
 import styles from "@/styles/Home.module.scss";
 
 export default function Home() {
-  const [input, setInput] = useState("");
   const [state, dispatch] = useReducer(todosReducer, { data: todoList });
-
-  const onHandleInput = (e) => setInput(e.target.value);
-
-  const onSetNewTodo = (e) => {
-    e.preventDefault();
-
-    const maxIdValue = state.data.reduce(
-      (acc, cur) => Math.max(acc, cur.id),
-      0
-    );
-
-    const currentIdValue = maxIdValue + 1;
-
-    dispatch({
-      type: "ADD_NEW_TODO",
-      payload: {
-        id: currentIdValue,
-        todo: input,
-        completed: false,
-      },
-    });
-
-    setInput("");
-  };
 
   return (
     <>
@@ -49,29 +24,10 @@ export default function Home() {
 
       <TodosContext.Provider value={{ state, dispatch }}>
         <main className={styles.Main}>
+          
           <Navbar />
+          <TodoList />
 
-          <div className={styles.TodoList}>
-            <form onSubmit={onSetNewTodo} className={styles.TodoList__Form}>
-              <input
-                className={styles.TodoList__Form__Input}
-                type="text"
-                name="content"
-                value={input}
-                onChange={onHandleInput}
-                placeholder="New task"
-              />
-              <input
-                type="submit"
-                value="+"
-                className={styles.TodoList__Form__Button}
-              />
-            </form>
-
-            {state.data.map((todo) => (
-              <Todo data={todo} key={todo.id} />
-            ))}
-          </div>
         </main>
       </TodosContext.Provider>
     </>

@@ -20,7 +20,14 @@ export const todosReducer = (state, action) => {
     case "ADD_NEW_TODO":
       return {
         ...state,
-        data: [...state.data, action.payload],
+        data: [
+          ...state.data,
+          {
+            id: Math.floor(Math.random() * 1000),
+            todo: action.payload,
+            completed: false,
+          },
+        ],
       };
 
     case "REMOVE_TODO":

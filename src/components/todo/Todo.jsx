@@ -4,7 +4,7 @@ import { TodosContext } from "@/state";
 
 import styles from "./index.module.scss";
 
-const Todo = ({ data }) => {
+const Todo = ({ data, index }) => {
   const { state, dispatch } = useContext(TodosContext);
 
   const onHandleTodo = (todoId) => {
@@ -22,7 +22,7 @@ const Todo = ({ data }) => {
     <div
       className={`${styles.Todo} ${data.completed ? styles.completed : ""}`}
       onClick={() => onHandleTodo(data.id)}>
-      <p className={styles.Todo__Id}>{data.id} </p>
+      <p className={styles.Todo__Id}>{index + 1} </p>
       <p className={styles.Todo__Content}>{data.todo}</p>
       <button
         className={styles.Todo__Remove}
