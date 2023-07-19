@@ -2,9 +2,9 @@ export const todoList = [
   {
     id: 1,
     todo: "Do something nice for someone I care about",
-    completed: true,
+    completed: false,
     userId: 26,
-  },
+  },/* 
   {
     id: 2,
     todo: "Memorize the fifty states and their capitals",
@@ -178,5 +178,5 @@ export const todoList = [
     todo: "Take cat on a walk",
     completed: false,
     userId: 15,
-  },
+  }, */
 ];

@@ -17,24 +17,19 @@ export const todosReducer = (state, action) => {
         }),
       };
 
-    default:
-      return state;
-  }
-};
-
-/* export const todosReducer = (state, action) => {
-  switch (action.type) {
-    case "CHANGE_STATUS":
+    case "ADD_NEW_TODO":
       return {
         ...state,
-        data: state.data.map((el) => {
-          if (el.id === action.payload) return { ...el, done: !el.done };
-          else return el;
-        }),
+        data: [...state.data, action.payload],
+      };
+
+    case "REMOVE_TODO":
+      return {
+        ...state,
+        data: state.data.filter((todo) => todo.id !== action.payload),
       };
 
     default:
       return state;
   }
 };
- */

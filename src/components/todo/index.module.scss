@@ -1,15 +1,41 @@
 .Todo {
+  margin-top: 12px;
+  position: relative;
   padding: 8px;
   border-radius: 6px;
-  width: 200px;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  gap: 8px;
   cursor: pointer;
   background-color: rgba(230, 203, 22, 0.616);
   transition: all 400ms ease-in-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  &__Id {
+    color: rgba(0, 0, 0, 0.3)
+  }
+
+  &__Remove {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    padding: 4px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.3);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
 }
 
 .completed {
