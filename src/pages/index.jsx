@@ -19,11 +19,17 @@ export default function Home() {
   const onSetNewTodo = (e) => {
     e.preventDefault();
 
+    const maxIdValue = state.data.reduce(
+      (acc, cur) => Math.max(acc, cur.id),
+      0
+    );
+
+    const currentIdValue = maxIdValue + 1;
+
     dispatch({
       type: "ADD_NEW_TODO",
       payload: {
-        /*  id: state.data.length + 1, */ // può succedere di avere todo con lo stesso id all'eliminazione e aggiunta
-        id: state.data.length + 1,
+        id: currentIdValue,
         todo: input,
         completed: false,
       },
