@@ -11,7 +11,9 @@ import styles from "./index.module.scss";
 
 const TodoList = () => {
   const [input, setInput] = useState("");
+  
   // const [state, dispatch] = useReducer(todosReducer, { data: data });
+
   const { state, dispatch } = useContext(TodosContext);
 
   const onHandleInput = (e) => setInput(e.target.value);
