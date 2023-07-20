@@ -30,6 +30,12 @@ export const todosReducer = (state, action) => {
         ],
       };
 
+    case "SET_DATABASE":
+      return {
+        ...state,
+        todos: action.payload,
+      };
+
     case "REMOVE_TODO":
       return {
         ...state,

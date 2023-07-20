@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import Head from "next/head";
 
@@ -8,9 +8,13 @@ import TodoList from "@/components/todoList";
 import Navbar from "@/components/navbar";
 import { todoList } from "@/mocks/todoList";
 
+import { db } from "../plugins/firebase";
+import { collection, getDocs } from "firebase/firestore";
+
 import styles from "@/styles/Home.module.scss";
 
-export default function Home() {
+export default function Home({ data }) {
+  // const { state, dispatch } = useContext(TodosContext);
   const [state, dispatch] = useReducer(todosReducer, { data: todoList });
 
   return (
@@ -22,14 +26,25 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TodosContext.Provider value={{ state, dispatch }}>
+      <TodosContext.Provider value={{ state: { data }, dispatch }}>
         <main className={styles.Main}>
-          
           <Navbar />
           <TodoList />
-
         </main>
       </TodosContext.Provider>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const data = [];
+  const querySnapshot = await getDocs(collection(db, "todos-list"));
+  querySnapshot.forEach((doc) => {
+    data.push(doc.data());
+  });
+  return {
+    props: {
+      data,
+    },
+  };
 }
